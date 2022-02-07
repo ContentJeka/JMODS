@@ -99,6 +99,7 @@ module.exports = {
       console.error(e)
     }
     
+
     const varName = this.evalMessage(data.varName, cache);
     const storage = parseInt(data.storage, 10);
     this.storeValue(result, storage, varName, cache);
