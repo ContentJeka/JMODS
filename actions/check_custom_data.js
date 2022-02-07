@@ -61,7 +61,6 @@ module.exports = {
     <hr class="subtlebar">
 
     <conditional-input id="branch" style="padding-top: 16px;"></conditional-input>
-    
 `;
   },
 

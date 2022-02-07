@@ -5,7 +5,6 @@ module.exports = {
     'filePath',
     'task',
     'type',
-    'in',
     'valueName',
     'value',
     'jsonPath',
@@ -108,9 +107,6 @@ module.exports = {
   <!-- ----------------------------- -->
   </div> <br><br><br>
   <store-in-variable allowNone selectId="storage" variableInputId="varName" variableContainerId="varNameContainer"></store-in-variable>
-  
-  
-  
 `;
   },
 
@@ -125,7 +121,6 @@ module.exports = {
         document.getElementById('divalue').style.display = null;
         document.getElementById('divname').style.width = '50%';
       }
-      
     };
 
     glob.onArray(document.getElementById('type'));
@@ -219,6 +214,10 @@ module.exports = {
     } else { // If the format is different, output an error
       console.log(`The file format should be JSON Not ${fileformat !== '' ? `'${fileformat}'` : 'empty'}!!!`)
     }
+
+    const varName = this.evalMessage(data.varName, cache);
+    const storage = parseInt(data.storage, 10);
+    this.storeValue(json, storage, varName, cache);
 
     this.callNextAction(cache);
   },
