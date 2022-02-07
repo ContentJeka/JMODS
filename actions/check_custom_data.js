@@ -81,7 +81,6 @@ module.exports = {
     const compare = parseInt(data.comparison, 10);
     let fileformat = path.extname(filepath)
     let file = '';
-    let json = ''
     let val1 = '';
     let val2 = this.evalMessage(data.value, cache);
 

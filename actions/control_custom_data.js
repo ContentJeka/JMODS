@@ -5,7 +5,6 @@ module.exports = {
     'filePath',
     'task',
     'type',
-    'in',
     'valueName',
     'value',
     'jsonPath',
@@ -219,6 +218,10 @@ module.exports = {
     } else { // If the format is different, output an error
       console.log(`The file format should be JSON Not ${fileformat !== '' ? `'${fileformat}'` : 'empty'}!!!`)
     }
+
+    const varName = this.evalMessage(data.varName, cache);
+    const storage = parseInt(data.storage, 10);
+    this.storeValue(json, storage, varName, cache);
 
     this.callNextAction(cache);
   },
