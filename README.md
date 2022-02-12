@@ -19,4 +19,4 @@
 - **Модифицированные действия** ↴
   - Wait `v1.0.0` от `PIKACHU`
 
-Если вы обнаружили баг напишите об этом в **_[issues](https://github.com/ContentJeka/JMODS/issues)_** или в **_[дискорд](https://discord.gg/8V3Je93CGt)_**
+Если вы обнаружили баг напишите об этом в **_[issues](https://github.com/ContentJeka/JMODS/issues)_** или в **_[дискорд Ol's Guild](https://discord.gg/8V3Je93CGt)_** ну или в **_[дискорд DBM Russia](https://discord.gg/XZeWBqapE6)_**
