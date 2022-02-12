@@ -16,5 +16,7 @@
   - Create Custom Data File `v1.1.0`
   - Store Custom Data `v1.1.0`
   - Check Custom Data `v1.1.0`
+- **Модифицированные действия** ↴
+  - Wait `v1.0.0` от `PIKACHU`
 
 Если вы обнаружили баг напишите об этом в **_[issues](https://github.com/ContentJeka/JMODS/issues)_** или в **_[дискорд](https://discord.gg/8V3Je93CGt)_**
