@@ -272,6 +272,8 @@ module.exports = {
   async action(cache) {
     const data = cache.actions[cache.index];
     const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
+    const discordModals = require('discord-modals')
+    discordModals(client);
     const title = this.evalMessage(data.title, cache)
     const CustomId = this.evalMessage(data.uniq, cache)
     let components = []
