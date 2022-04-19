@@ -273,12 +273,12 @@ module.exports = {
     const data = cache.actions[cache.index];
     const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
     const discordModals = require('discord-modals')
-    discordModals(client);
     const title = this.evalMessage(data.title, cache)
     const CustomId = this.evalMessage(data.uniq, cache)
     let components = []
 
     const Bot = this.getDBM().Bot
+    discordModals(Bot.bot);
 
     for(let i = 0; i < data.inputs.length; i++) {
       const uniqueId = this.evalMessage(data.inputs[i].uniqID, cache)
