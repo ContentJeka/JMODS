@@ -306,7 +306,7 @@ module.exports = {
       .setCustomId(CustomId)
       .addComponents(components)
       showModal(modal, {
-        client: cache.interaction.client, // Client to show the Modal through the Discord API.
+        client: client, // Client to show the Modal through the Discord API.
         interaction: cache.interaction // Show the modal with interaction data.
       })  
 
