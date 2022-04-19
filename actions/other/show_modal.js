@@ -278,7 +278,8 @@ module.exports = {
     let components = []
 
     const Bot = this.getDBM().Bot
-    discordModals(Bot.bot);
+    const client = Bot.bot
+    discordModals(client);
 
     for(let i = 0; i < data.inputs.length; i++) {
       const uniqueId = this.evalMessage(data.inputs[i].uniqID, cache)
