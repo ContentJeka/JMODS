@@ -1,10 +1,12 @@
-"versions": {
-  "customData": {
-    "control": "2.0",
-    "check": "2.0",
-    "create": "2.0",
-    "config": "2.0",
-    "store": "2.0",
-    "top": "2.0"
+{
+  "versions": {
+    "customData": {
+      "control": "2.0",
+      "check": "2.0",
+      "create": "2.0",
+      "config": "2.0",
+      "store": "2.0",
+      "top": "2.0"
+    }
   }
 }
