@@ -55,7 +55,7 @@ module.exports = {
       </style>
       <div id="upds" style="text-align: center; width: 100%; padding:6px; border:1px solid #fff; border-radius: 4px">
         <p id="jackallox">Обнаружено обновление!</p>
-        <p id="kaildolboeb">Установленная версия: <span id="current" class="cfu"></span>, доступная версия: <span id="serv" class="cfu"></span></p>
+        <p id="kailtop">Установленная версия: <span id="current" class="cfu"></span>, доступная версия: <span id="serv" class="cfu"></span></p>
         <button onclick="glob.update()" class="cfu" id="jekatop" style="font-weight: bold; width: 80%; font-size: 15px">Обновить!</button>
       </div><br>
       <!-- -->
@@ -122,9 +122,6 @@ module.exports = {
         const { glob, document } = this;
 
         const fetch = require("node-fetch")
-        const fs = require("fs-extra")
-        let project2 = await JSON.parse(fs.readFileSync("./settings.json"))["current-project"]
-        console.log(JSON.parse(fs.readFileSync(`${project2}/data/settings.json`))["token"])
 
         let csversion = document.getElementById("info").getAttribute("version")
         document.getElementById("current").innerHTML = csversion
@@ -148,7 +145,7 @@ module.exports = {
           const fs = require("fs-extra")
           fs.writeFileSync("./actions/control_custom_data.js", file)
           document.getElementById("jackallox").innerHTML = `Нажмите <span class="cfu">CTRL + SHIFT + U</span> для обновления`
-          document.getElementById("kaildolboeb").innerHTML = null
+          document.getElementById("kailtop").innerHTML = null
           document.getElementById("jekatop").style.display = "none"
         }
 
