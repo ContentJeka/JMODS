@@ -37,7 +37,7 @@ module.exports = {
     html(data, isEvent) {
       return `
       <div style="overflow-y: scroll">
-      <div id="info" version="1.0"></div>
+      <div id="info" version="2.0"></div>
       <!-- CHECK FOR UPDATES -->
       <style>
         .cfu {
