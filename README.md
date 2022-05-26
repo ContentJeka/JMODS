@@ -11,6 +11,8 @@
 
 На данный момент готово:
 
+ДОКУМЕНТАЦИЯ К **CUSTOM DATA**   <img style="width:50px" src="https://images-ext-2.discordapp.net/external/CwtYIbsIGmZhIFpbmMHc97ybSayyBvCTw_8H2xUez0A/https/i.imgur.com/7kAFYlp.png">
+
 - **Custom Data** ↴
   - Control Custom Data `v2.0`
   - Create Custom Data File `v1.1.0`
