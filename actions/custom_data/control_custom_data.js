@@ -3,9 +3,31 @@ var requestOptions = {
   redirect: 'follow'
 };
 
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+// ░█████░█░░░█░█████░█████░█████░██░██░░░
+// ░█░░░░░█░░░█░█░░░░░░░█░░░█░░░█░█░█░█░░░
+// ░█░░░░░█░░░█░█████░░░█░░░█░░░█░█░░░█░░░
+// ░█████░█████░▄▄▄▄█░░░█░░░█████░█░░░█░░░
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+// ░████░░░███░░█████░░███░░░░░░░░░░░░░░░░
+// ░█░░░█░█░░░█░░░█░░░█░░░█░░▄▄░░░▄▄▄░░░▄░
+// ░█░░░█░█▀▀▀█░░░█░░░█▀▀▀█░░▄█░░░█░█░░░█░
+// ░████░░█░░░█░░░█░░░█░░░█░░█▄░▄░█▄█░▄░█░
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+// ░█░░░░█░░█░░░░░█░████░█░▄▀░████░
+// ░████░████░░░░░█░█░░░░█▄▀░░█░░█░
+// ░█░░█░░░░█░░░░░█░████░█░█░░████░
+// ░████░████░░████░█▄▄▄░█░░█░█░░█░
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
 module.exports = {
+    // Название
     name: 'Control Custom Data 2.0',
+    // Группа
     section: 'Custom Data',
+    // Поля
     fields: [
         "filePath",
         "jsonPath",
@@ -16,28 +38,103 @@ module.exports = {
         "index",
     ],
   
+    // Мета данные (useless)
     meta: {
-      version: '3.0.0',
+      version: '2.0.1',
       preciseCheck: false,
       author: 'JMODS',
       authorUrl: 'https://github.com/ContentJeka/JMODS',
       downloadURL: 'https://github.com/ContentJeka/JMODS/blob/main/actions/control_custom_data.js',
     },
   
-  
+    // субтайтлы
     subtitle(data) {
+      let type;
+      let text;
+      let title = data.title;
+      let path = `<b>${data.filePath.split("/")[data.filePath.split("/").length - 1]}</b>`
+      let value = data.value;
+      switch (data.type) {
+        case "0":
+          type = "<b>Объект</b>";
+          text = `под названием <b>"${title}"</b>`;
+          break;
+        case "1":
+          type = "<b>Массив</b>";
+          text = `под названием <b>"${title}"</b>`;
+          break;
+        case "2":
+          type = "<b>Значение</b>"
+          text = `под названием <b>"${title}"</b>, со значением <b>${value}</b>`;
+          break;
+      };
+
+      let task;
+      switch (data.task) {
+        case "0":
+          task = "<b>Создать</b>";
+          break;
+        case "1":
+          task = "<b>Удалить</b>";
+          return `${task} ${type} в ${path}`
+          break;
+      };
+      
+      return `${task} ${type} ${text} в ${path}`
 
     },
   
+    // Переменные (useless)
     variableStorage(data, varType) {
         if (parseInt(data.storage, 10) !== varType) return;
         return [data.varName, 'Custom Data JSON'];
     },
   
+    // HTML - внешний вид
     html(data, isEvent) {
       return `
-      <div style="overflow-y: scroll">
-      <div id="info" version="2.0"></div>
+      <div id="catSS" style="display: none;
+      background-color: rgba(0, 0, 0, 0.8);
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      left: 0;
+      z-index: 100;
+      top: 0;">
+        <div style="position:absolute; z-index: 101; margin: calc(50vh - 242px) calc(50vw - 100px) calc(50vh - 100px) calc(50vw - 242px)">
+          <img src="https://images-ext-1.discordapp.net/external/S93CpkCNSuBUMr5kKJBUeh3RFcrfD-I3Yxw30A6LLjg/https/i.imgur.com/69Kg9mB.png"/>
+          <span style="position: absolute;
+          margin-left: 200px;
+          font-size: 20px;
+          width: 100vw;
+          top: 25px;">Мяу, тебе нужна помощь по Custom Data?</span>
+          <a href="https://github.com/ContentJeka/JMODS/wiki" style="width: 190%;
+          height: 40px;
+          border-radius: 15px;
+          color: #000;
+          font-weight: 600;
+          border: none;
+          background: #fff;
+          position: absolute;
+          top: 54px;
+          margin-left: 200px;
+          box-shadow: 0px 0px 49px 6px rgb(255 255 255 / 20%);
+          text-align: center;
+          padding: 10px;">Да!</a>
+          <button onclick="glob.onnoclicked()" style="width: 190%;
+          height: 40px;
+          border-radius: 15px;
+          color: #fff;
+          font-weight: 600;
+          border: solid #fff 1px;
+          background: rgba(256, 256, 256, 0.1);
+          position: absolute;
+          top: 112px;
+          margin-left: 200px;
+          box-shadow: 0px 0px 49px 6px rgb(255 255 255 / 20%);">Нет</button>
+        </div>
+      </div>
+      <div id="info" version="2.0.1"></div>
       <!-- CHECK FOR UPDATES -->
       <style>
         .cfu {
@@ -68,6 +165,7 @@ module.exports = {
         <input id="jsonPath" class="round" type="text" placeholder="Оставь пустым если здесь впервые">
       </div>
       <div style="float:left;padding-left: 5%;width:20%">
+        <span style="position:absolute;font-size: 8px; color: #ffffff; margin-top: -5px">0 - первый, ^ - последний</span><br>
         <span class="dbminputlabel">Индекс</span><br>
         <input id="index" class="round" onchange="glob.index(this)" type="text" value="N" placeholder="N - нету">
         <span id="invalidIndex" style="position:absolute;font-size: 12px; color: red">Индекс только из чисел!</span>
@@ -113,10 +211,14 @@ module.exports = {
      <div id="preview"></div>
     </div>
      </div>
+
+    <div id="cat1" style="position:absolute;bottom: -120px;cursor:pointer">
+     <img  onclick="glob.catclick()" src="https://images-ext-1.discordapp.net/external/LhQujrHiACY_jl0ijETfnSiUk1TzkOW-hoa--e4dTyk/https/i.imgur.com/upzrNFx.png"/> 
     </div>
      `;
     },
 
+    // Инит (useless)
     async init() {
 
         const { glob, document } = this;
@@ -137,9 +239,21 @@ module.exports = {
           document.getElementById("upds").style.display = "none";
         }
 
+        glob.catclick = async function () {
+          document.getElementById("catSS").style.display = null
+        }
+
+        glob.onnoclicked = async function () {
+          document.getElementById("catSS").style.display = "none";
+        }
+
+        glob.onyesclicked = async function () {
+          document.getElementById("catSL").style.display = "none";
+        }
+
         glob.update = async function () {
           let file;
-          file = await fetch("https://cdn.jsdelivr.net/gh/ContentJeka/JMODS@latest/actions/custom_data/control_custom_data.js", requestOptions)
+          file = await fetch("https://cdn.jsdelivr.net/gh/ContentJeka/JMODS@main/actions/custom_data/control_custom_data.js", requestOptions)
             .then(res => res.text())
             .then(data => file = data)
           const fs = require("fs-extra")
@@ -202,6 +316,7 @@ module.exports = {
         glob.onValue2(document.getElementById("type"))
     },
   
+    // Действие
     async action(cache) {
         const data = cache.actions[cache.index];
         const Mods = this.getMods();
@@ -293,5 +408,6 @@ module.exports = {
         this.callNextAction(cache);
     }},
   
+    // (useless)
     mod() {},
   };
