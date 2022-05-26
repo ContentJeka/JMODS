@@ -228,7 +228,7 @@ module.exports = {
         let csversion = document.getElementById("info").getAttribute("version")
         document.getElementById("current").innerHTML = csversion
         let cfg;
-        cfg = await fetch("https://cdn.jsdelivr.net/gh/ContentJeka/JMODS@latest/config.json", requestOptions)
+        cfg = await fetch("https://cdn.jsdelivr.net/gh/ContentJeka/JMODS@main/config.json", requestOptions)
           .then(res => res.json())
           .then(data => cfg = data)
         let serversion = cfg.versions.customData.control
