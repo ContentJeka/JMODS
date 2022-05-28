@@ -490,7 +490,7 @@ var requestOptions = {
             }
         }
         fs.writeFileSync(filePath, JSON.stringify(json, undefined, 4))
-
+        this.callNextAction(cache)
     },
     
       // (useless)
