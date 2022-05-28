@@ -439,7 +439,7 @@ var requestOptions = {
         const task = this.evalMessage(data.task, cache);
 
         if (/^(\*|\+|\-|\/)/gi.test(value)) {
-            value = `${jsonPath}${value.match(/^(\*|\+|\-|\/)/gi)[0]}${value}`
+            value = eval(`${Number(jsonPath[title])}${value.match(/^(\*|\+|\-|\/)/gi)[0]}${value.slice(1)}`)
         }
 
         if (task == 0) {
