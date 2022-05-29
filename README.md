@@ -15,7 +15,6 @@
 
 - **Custom Data** ↴
   - Control Custom Data `v2.2`
-  - Create Custom Data File `v1.1.0`
   - Store Custom Data `v2.0`
   - Check Custom Data `v2.0`
 - **Другое** ↴
