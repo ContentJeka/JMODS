@@ -12,7 +12,7 @@ var requestOptions = {
   // ░████░░░███░░█████░░███░░░░░░░░░░░░░░░░
   // ░█░░░█░█░░░█░░░█░░░█░░░█░░▄▄░░░▄▄░░░░░░
   // ░█░░░█░█▀▀▀█░░░█░░░█▀▀▀█░░▄█░░░▄█░░░░░░
-  // ░████░░█░░░█░░░█░░░█░░░█░░█▄░▄░█▄░░░░░░
+  // ░████░░█░░░█░░░█░░░█░░░█░░█▄░▄░▄█░░░░░░
   // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
   
   // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -36,6 +36,12 @@ var requestOptions = {
           "val",
           "task",
           "index",
+          "indexcomparison",
+          "ifindexmorethan1",
+          "indexval",
+          "indexkey",
+          "indexstorage",
+          "indexvarName"
       ],
     
       // Мета данные (useless)
@@ -98,118 +104,151 @@ var requestOptions = {
     
       // Переменные (useless)
       variableStorage(data, varType) {
-          if (parseInt(data.storage, 10) !== varType) return;
-          return [data.varName, 'Custom Data JSON'];
+          if (parseInt(data.indexstorage, 10) !== varType) return;
+          return [data.indexvarName, 'Custom Data Array Index'];
       },
     
       // HTML - внешний вид
       html(data, isEvent) {
-        return `
-        <img id="dsntwrk" style="transition: 1s;width: 100vw; height: 100vh; position: absolute; left: 0; top: -100vh; z-index: 100000" src="https://images-ext-1.discordapp.net/external/NdDdsDjVGvuFgQNYOel_OKRVDnADx0FMGheHj0D1I7g/https/i.imgur.com/paJHIT7.png?width=993&height=1292"/>
-        <div id="blcbg" style="display: none;position: absolute; background-color: rgba(0, 0, 0, 0.7); left: 0; top: 0; z-index: 100; width: 100vw; height: 100vh"></div>
-        <div id="selectpath" style="
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: #fff;
-            width: calc(100vw - 50px);
-            height: calc(100vh - 110px);
-            /* padding: 25px; */
-            margin: 25px;
-            z-index: 1002;
-            border-radius: 15px
-        ">
-            <img id="closepath" onclick="document.getElementById('blcbg').style.display = 'none'; document.getElementById('selectpath').style.display = 'none';document.getElementById('closepath').style.display = 'none'" style="display:none;position:absolute; right: 0; padding: 15px; filter: opacity(0.3)" src="https://images-ext-1.discordapp.net/external/AohVSagpV1CiV7kOUU_omxMk079tnPjn3L4Cz1r5by8/https/i.imgur.com/XHQFG7Q.png?width=10&height=10"/>
-            <div id="files" style="padding:25px"></div>
-        </div>
-        <button onclick="glob.expert()" style="padding: 10px;position:absolute; top: 0px; right: 0px;background: none; border: none; color: rgba(256, 256, 256, 0.6); font-size: 12px">Expert Mode</button>
-        <div id="catSS" style="display: none;
-        background-color: rgba(0, 0, 0, 0.8);
-        width: 100vw;
-        height: 100vh;
-        position: absolute;
-        left: 0;
-        z-index: 100;
-        top: 0;">
-          <div style="position:absolute; z-index: 101; margin: calc(50vh - 242px) calc(50vw - 100px) calc(50vh - 100px) calc(50vw - 242px)">
-            <img src="https://images-ext-1.discordapp.net/external/S93CpkCNSuBUMr5kKJBUeh3RFcrfD-I3Yxw30A6LLjg/https/i.imgur.com/69Kg9mB.png"/>
-            <span style="position: absolute;
-            margin-left: 200px;
-            font-size: 20px;
-            width: 100vw;
-            top: 25px;">Мяу, тебе нужна помощь по Custom Data?</span>
-            <a href="https://github.com/ContentJeka/JMODS/wiki" style="width: 190%;
-            height: 40px;
-            border-radius: 15px;
-            color: #000;
-            font-weight: 600;
-            border: none;
-            background: #fff;
-            position: absolute;
-            top: 54px;
-            margin-left: 200px;
-            box-shadow: 0px 0px 49px 6px rgb(255 255 255 / 20%);
-            text-align: center;
-            padding: 10px;">Да!</a>
-            <button onclick="glob.onnoclicked()" style="width: 190%;
-            height: 40px;
-            border-radius: 15px;
-            color: #fff;
-            font-weight: 600;
-            border: solid #fff 1px;
-            background: rgba(256, 256, 256, 0.1);
-            position: absolute;
-            top: 112px;
-            margin-left: 200px;
-            box-shadow: 0px 0px 49px 6px rgb(255 255 255 / 20%);">Нет</button>
-          </div>
-        </div>
-        <div id="info" version="2.2"></div>
-        <!-- CHECK FOR UPDATES -->
-        <style>
-          .cfu {
-              padding: 2px 3px 2px 3px;
-              background-color: var(--label-background-color);
-              border: solid 1px var(--label-border);
-              border-radius: 4px;
-              box-shadow: 3px 0px 2px var(--label-shadow-color);
-              font-size: 16px;
-          }
-          p {
-            margin: 0em 0em 0.5em
-          }
-        </style>
-        <div id="upds" style="text-align: center; width: 100%; padding:6px; border:1px solid #fff; border-radius: 4px">
-          <p id="jackallox">Обнаружено обновление!</p>
-          <p id="kailtop">Установленная версия: <span id="current" class="cfu"></span>, доступная версия: <span id="serv" class="cfu"></span></p>
-          <button onclick="glob.update()" class="cfu" id="jekatop" style="font-weight: bold; width: 80%; font-size: 15px">Обновить!</button>
-        </div><br>
-        <!-- -->
-        <span class="dbminputlabel">Путь к файлу</span><br>
-        <input id="filePath" class="round" type="text" onchange="glob.fileext()" value="./data/" placeholder="./data/top.json">
-        <img onclick="document.getElementById('blcbg').style.display = null; document.getElementById('selectpath').style.display = null;document.getElementById('closepath').style.display = null" style="cursor: pointer;right: 0; margin-top: -25px;margin-right: 4%;position: absolute;filter: invert(1) opacity(0.5)" src="https://images-ext-1.discordapp.net/external/kI1YG6DhcpzESJ5OQo4WaqQIxhuva2VKC8Q84mz3S88/https/i.imgur.com/wSvljNY.png?width=20&height=20"/>
-        <span id="ext"style="position:absolute;font-size: 12px; color: red">Файла не существует, создадим! 😇</span><br>
-        <div style="width:75%;float:left;">
-          <span class="dbminputlabel">JSON путь</span><br>
-          <input id="jsonPath" class="round" type="text" placeholder="Оставь пустым если здесь впервые">
-        </div>
-        <div style="float:left;padding-left: 5%;width:20%">
-          <span style="position:absolute;font-size: 8px; color: #ffffff; margin-top: -5px">0 - первый, ^ - последний</span><br>
-          <span class="dbminputlabel">Индекс</span><br>
-          <input id="index" class="round" onchange="glob.index(this)" type="text" value="N" placeholder="N - нету">
-          <span id="invalidIndex" style="position:absolute;font-size: 12px; color: red">Индекс только из чисел!</span>
-        </div><br><br><br><br>
-        <style>
-          .si {
+        return `  
+        <div id="indexfinder" class="si" style="transition:1s;display:none;z-index: 1000;position:absolute;/* padding:25px; */top: 0;margin: 25px;left: 0;width: calc(100vw - 50px);height: calc(100vh - 50px );padding: 25px;background-color: var(--label-background-color);border: solid 1px var(--label-border);border-radius: 4px;box-shadow: 3px 0px 2px var(--label-shadow-color);">
+          <style>
+            .si {
               padding: 3px 5px 3px 5px;
               background-color: var(--label-background-color);
               border: solid 1px var(--label-border);
               border-radius: 4px;
               box-shadow: 3px 0px 2px var(--label-shadow-color);
-          }
+            }
+          </style>  
+          <span class="dbminputlabel">Условие</span><br>
+          <select id="indexcomparison" class="round" style="" onchange="glob.indexcomp(this)">
+            <option value="-1" selected>Не искать</option>
+            <option value="0">Имеет ключ под названием</option>
+            <option value="!0">Не имеет ключ под названием</option>
+            <option value="1">Значение равно</option>
+            <option value="!1">Значение не равно</option>
+            <option value="2">Ключ = значение</option>
+            <option value="!2">Ключ не = значение</option>
+            <option value="3">Предмет под названием</option>
+          </select><br>
+          <div id="indexkeyd">
+            <span class="dbminputlabel">Ключ</span><br>
+            <input id="indexkey" class="round" onchange="" type="text" value="" placeholder=""><br>
+          </div>
+          <span class="dbminputlabel">Значение</span><br>
+          <input id="indexval" class="round" onchange="" type="text" value="" placeholder=""><br>
+          <span class="si">Если совпадений больше одного:</span>
+          <select id="ifindexmorethan1" class="si" style="" onchange="glob.strvar(this)">
+            <option value="0" selected>Использовать первый сверху</option>
+            <option value="1">Использовать первый снизу</option>
+            <option value="2">Использовать все</option>
+          </select><br><br>
+          <store-in-variable id="strvar" dropdownLabel="Сохранить в" selectId="indexstorage" variableContainerId="varNameContainer" variableInputId="indexvarName"></store-in-variable>
+          <button onclick="document.getElementById('indexfinder').style.display = 'none';document.getElementById('blcbg').style.display = 'none';" class="tiny ui labeled icon button" style="bottom: 20px;position: absolute;width: 50vw;margin: 0 17vw 0 17vw;left: 0;" onclick=""><i class="search icon"></i><span id="createactionlabel">Найти</span></button>
+        </div>
+        <img id="dsntwrk" style="transition: 1s;width: 100vw; height: 100vh; position: absolute; left: 0; top: -100vh; z-index: 100000" src="https://images-ext-1.discordapp.net/external/NdDdsDjVGvuFgQNYOel_OKRVDnADx0FMGheHj0D1I7g/https/i.imgur.com/paJHIT7.png?width=993&amp;height=1292" />
+        <div id="blcbg" style="display: none;position: absolute; background-color: rgba(0, 0, 0, 0.7); left: 0; top: 0; z-index: 100; width: 100vw; height: 100vh"></div>
+        <div id="selectpath" style="
+                    display: none;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background-color: #fff;
+                    width: calc(100vw - 50px);
+                    height: calc(100vh - 110px);
+                    /* padding: 25px; */
+                    margin: 25px;
+                    z-index: 1002;
+                    border-radius: 15px
+                "> <img id="closepath" onclick="document.getElementById('blcbg').style.display = 'none'; document.getElementById('selectpath').style.display = 'none';document.getElementById('closepath').style.display = 'none'" style="display:none;position:absolute; right: 0; padding: 15px; filter: opacity(0.3)" src="https://images-ext-1.discordapp.net/external/AohVSagpV1CiV7kOUU_omxMk079tnPjn3L4Cz1r5by8/https/i.imgur.com/XHQFG7Q.png?width=10&amp;height=10" />
+          <div id="files" style="padding:25px"></div>
+        </div>
+        <button onclick="glob.expert()" style="padding: 10px;position:absolute; top: 0px; right: 0px;background: none; border: none; color: rgba(256, 256, 256, 0.6); font-size: 12px">Expert Mode</button>
+        <div id="catSS" style="display: none;
+                background-color: rgba(0, 0, 0, 0.8);
+                width: 100vw;
+                height: 100vh;
+                position: absolute;
+                left: 0;
+                z-index: 100;
+                top: 0;">
+          <div style="position:absolute; z-index: 101; margin: calc(50vh - 242px) calc(50vw - 100px) calc(50vh - 100px) calc(50vw - 242px)"> <img src="https://images-ext-1.discordapp.net/external/S93CpkCNSuBUMr5kKJBUeh3RFcrfD-I3Yxw30A6LLjg/https/i.imgur.com/69Kg9mB.png" /> <span style="position: absolute;
+                    margin-left: 200px;
+                    font-size: 20px;
+                    width: 100vw;
+                    top: 25px;">Мяу, тебе нужна помощь по Custom Data?</span> <a href="https://github.com/ContentJeka/JMODS/wiki" style="width: 190%;
+                    height: 40px;
+                    border-radius: 15px;
+                    color: #000;
+                    font-weight: 600;
+                    border: none;
+                    background: #fff;
+                    position: absolute;
+                    top: 54px;
+                    margin-left: 200px;
+                    box-shadow: 0px 0px 49px 6px rgb(255 255 255 / 20%);
+                    text-align: center;
+                    padding: 10px;">Да!</a>
+            <button onclick="glob.onnoclicked()" style="width: 190%;
+                    height: 40px;
+                    border-radius: 15px;
+                    color: #fff;
+                    font-weight: 600;
+                    border: solid #fff 1px;
+                    background: rgba(256, 256, 256, 0.1);
+                    position: absolute;
+                    top: 112px;
+                    margin-left: 200px;
+                    box-shadow: 0px 0px 49px 6px rgb(255 255 255 / 20%);">Нет</button>
+          </div>
+        </div>
+        <div id="info" version="2.3"></div>
+        <!-- CHECK FOR UPDATES -->
+        <style>
+        .cfu {
+          padding: 2px 3px 2px 3px;
+          background-color: var(--label-background-color);
+          border: solid 1px var(--label-border);
+          border-radius: 4px;
+          box-shadow: 3px 0px 2px var(--label-shadow-color);
+          font-size: 16px;
+        }
+        
+        p {
+          margin: 0em 0em 0.5em
+        }
         </style>
-        <span class="si">Я хочу</span>
+        <div id="upds" style="text-align: center; width: 100%; padding:6px; border:1px solid #fff; border-radius: 4px">
+          <p id="jackallox">Обнаружено обновление!</p>
+          <p id="kailtop">Установленная версия: <span id="current" class="cfu"></span>, доступная версия: <span id="serv" class="cfu"></span></p>
+          <button onclick="glob.update()" class="cfu" id="jekatop" style="font-weight: bold; width: 80%; font-size: 15px">Обновить!</button>
+        </div>
+        <br>
+        <span class="dbminputlabel">Путь к файлу</span><br>
+        <input id="filePath" class="round" type="text" onchange="glob.fileext()" value="./data/" placeholder="./data/top.json"> <img onclick="document.getElementById('blcbg').style.display = null; document.getElementById('selectpath').style.display = null;document.getElementById('closepath').style.display = null" style="cursor: pointer;right: 0; margin-top: -25px;margin-right: 4%;position: absolute;filter: invert(1) opacity(0.5)" src="https://images-ext-1.discordapp.net/external/kI1YG6DhcpzESJ5OQo4WaqQIxhuva2VKC8Q84mz3S88/https/i.imgur.com/wSvljNY.png?width=20&amp;height=20" /> <span id="ext" style="position:absolute;font-size: 12px; color: red">Файла не существует, создадим! 😇</span>
+        <br>
+        <div style="width:75%;float:left;">
+          <span class="dbminputlabel">JSON путь</span><br>
+          <input id="jsonPath" class="round" type="text" placeholder="Оставь пустым если здесь впервые"> </div>
+        <div style="float:left;padding-left: 2.5%;width: 25%;">
+          <span class="dbminputlabel">Индекс</span><br>
+          <input id="index" class="round" onchange="glob.index(this)" type="text" value="N" placeholder="N - нету">
+          <img onclick="document.getElementById('indexfinder').style.display = null;document.getElementById('blcbg').style.display = null;" style="cursor: pointer;right: 0; margin-top: -25px;margin-right: 4%;position: absolute;filter: invert(1) opacity(0.5)" src="https://images-ext-1.discordapp.net/external/kI1YG6DhcpzESJ5OQo4WaqQIxhuva2VKC8Q84mz3S88/https/i.imgur.com/wSvljNY.png?width=20&amp;height=20" />
+          <span id="invalidIndex" style="position:absolute;font-size: 12px; color: red">Индекс только из чисел!</span> </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <style>
+        .si {
+          padding: 3px 5px 3px 5px;
+          background-color: var(--label-background-color);
+          border: solid 1px var(--label-border);
+          border-radius: 4px;
+          box-shadow: 3px 0px 2px var(--label-shadow-color);
+        }
+        </style> <span class="si">Я хочу</span>
         <select id="task" class="si" style="margin-left:2px" onchange="glob.onDelete(this)">
           <option value="0" selected>Создать / Добавить</option>
           <option value="1">Удалить</option>
@@ -218,31 +257,27 @@ var requestOptions = {
           <option value="0" selected>Объект</option>
           <option value="1">Массив</option>
           <option value="2">Значение</option>
-       </select><br><br>
-       <div class="11" style="background-repeat: repeat;width: 100%; padding:10px; border:1px solid #fff; border-radius: 4px">
-       <style>
-       .hide {
-           display: none !important
-       }
-    </style>
-          <div class="12">
-              <span class="dbminputlabel">Название (используется в "JSON путь")</span><br>
-              <input id="title" class="round" onchange="glob.text(this)" type="text" placeholder=""><br>
-          </div>
-          <div class="13">
-              <span class="dbminputlabel">Значение (текст: "Я использую Custom Data!")</span>
-              <input id="val" class="round" onchange="glob.text(this)" type="text" placeholder="">
-          </div>
-          </div>
-      </div><br>
-      <div id="prew"style="color:rgb(171, 178, 191); font-weight:400;background-color:rgb(40, 44, 52);background:rgb(40, 44, 52);display:block;padding: .5em;border-radius:4px">
-       <div id="preview"></div>
-      </div>
-       </div>
-      <div id="cat1" style="position:absolute;bottom: -120px;cursor:pointer">
-       <img id="catimg" onclick="glob.catclick(this)" style="transition: 3s" src="https://images-ext-1.discordapp.net/external/LhQujrHiACY_jl0ijETfnSiUk1TzkOW-hoa--e4dTyk/https/i.imgur.com/upzrNFx.png"/> 
-      </div>
-       `;
+        </select>
+        <br>
+        <br>
+        <div class="11" style="background-repeat: repeat;width: 100%; padding:10px; border:1px solid #fff; border-radius: 4px">
+          <style>
+          .hide {
+            display: none !important
+          }
+          </style>
+          <div class="12"> <span class="dbminputlabel">Название (используется в "JSON путь")</span>
+            <br>
+            <input id="title" class="round" onchange="glob.text(this)" type="text" placeholder="">
+            <br> </div>
+          <div class="13"> <span class="dbminputlabel">Значение (текст: "Я использую Custom Data!")</span>
+            <input id="val" class="round" onchange="glob.text(this)" type="text" placeholder=""> </div>
+        </div>
+        <br>
+        <div id="prew" style="color:rgb(171, 178, 191); font-weight:400;background-color:rgb(40, 44, 52);background:rgb(40, 44, 52);display:block;padding: .5em;border-radius:4px">
+          <div id="preview"></div>
+        </div>
+        <div id="cat1" style="position:absolute;bottom: -120px;cursor:pointer"> <img id="catimg" onclick="glob.catclick(this)" style="transition: 3s" src="https://images-ext-1.discordapp.net/external/LhQujrHiACY_jl0ijETfnSiUk1TzkOW-hoa--e4dTyk/https/i.imgur.com/upzrNFx.png" /> </div>`;
       },
   
       // Инит (useless)
@@ -326,6 +361,26 @@ var requestOptions = {
           glob.onyesclicked = async function () {
             document.getElementById("catSL").style.display = "none";
           }
+
+          glob.indexcomp = async function (event) {
+            if(event.value !== "-1") {
+              document.getElementById("index").value = "\"Поиск\"";
+              document.getElementById("invalidIndex").style.display = "none";
+              document.getElementById("type").value = "2"
+              document.getElementById("type").disabled = true
+              document.getElementById("index").value = "N"
+              document.getElementById("index").disabled = true
+              glob.onValue2(document.getElementById("type"))
+            } else {
+              document.getElementById("type").disabled = false
+              document.getElementById("index").disabled = false
+            }
+            if(event.value == "2" || event.value == "!2") {
+              document.getElementById("indexkeyd").style.display = null;
+            } else {
+              document.getElementById("indexkeyd").style.display = "none";
+            }
+          }
   
           glob.update = async function () {
             let file;
@@ -366,6 +421,14 @@ var requestOptions = {
               }
             };
   
+            glob.strvar = function (event) {
+              if(event.value == "2") {
+                document.getElementById("strvar").style.display = "none";
+              } else {
+                document.getElementById("strvar").style.display = null;
+              }
+            }
+
           glob.onDelete = function (event) {
             if (event.value === "1") {
               document.getElementsByClassName("11")[0].style.display = "none";
@@ -395,6 +458,8 @@ var requestOptions = {
           glob.index(document.getElementById("index"))
           glob.fileext()
           glob.onValue2(document.getElementById("type"))
+          glob.indexcomp(document.getElementById("indexcomparison"))
+          glob.strvar(document.getElementById("ifindexmorethan1"))
       },
     
       // Действие
@@ -439,48 +504,155 @@ var requestOptions = {
         const task = this.evalMessage(data.task, cache);
 
         if (/^(\*|\+|\-|\/)/gi.test(value)) {
+          console.log(jsonPath[title])
             value = eval(`${Number(jsonPath[title])}${value.match(/^(\*|\+|\-|\/)/gi)[0]}${value.slice(1)}`)
         }
 
+        // "indexcomparison",
+        // "ifindexmorethan1",
+        // "indexval",
+        // "indexkey"
+
+        let comp = data.indexcomparison
+        let indexval = this.evalMessage(data.indexval, cache)
+        let indexkey = this.evalMessage(data.indexkey, cache)
+        let times = data.ifindexmorethan1
+        console.log(comp)
         if (task == 0) {
-            if(!Array.isArray(jsonPath)) {
-                switch (select) {
-                    case "0":
-                        jsonPath[title] = {};
-                        break;
-                    case "1":
-                        jsonPath[title] = [];
-                        break;
-                    case "2":
-                        jsonPath[title] = value;
-                        break;
+            if(comp !== "-1") {
+                result = []
+                indexQ = []
+                switch(comp) {
+                  case "0":
+                    for(let i = 0; i < jsonPath.length; i++) {
+                      for(let a = 0; a < Object.keys(jsonPath[i]).length;a++) {
+                        if(Object.keys(jsonPath[i])[a] == indexval) {
+                          result.push(jsonPath[i])
+                          indexQ.push(i)
+                        }
+                      }
+                    }
+                    break;
+                  case "!0":
+                    for(let i = 0; i < jsonPath.length; i++) {
+                      for(let a = 0; a < Object.keys(jsonPath[i]).length;a++) {
+                        if(Object.keys(jsonPath[i])[a] !== indexval) {
+                          result.push(jsonPath[i])
+                          indexQ.push(i)
+                        }
+                      }
+                    }
+                    break;
+                  case "1":
+                    for(let i = 0; i < jsonPath.length; i++) {
+                      for(let a = 0; a < Object.keys(jsonPath[i]).length; a++) {
+                        if(jsonPath[i][Object.keys(jsonPath[i])[a]] == indexval) {
+                          result.push(jsonPath[i])
+                          indexQ.push(i)
+                        }
+                      }
+                    }
+                    break;
+                  case "!1":
+                    for(let i = 0; i < jsonPath.length; i++) {
+                      for(let a = 0; a < Object.keys(jsonPath[i]).length; a++) {
+                        if(jsonPath[i][Object.keys(jsonPath[i])[a]] !== indexval) {
+                          result.push(jsonPath[i])
+                          indexQ.push(i)
+                        }
+                      }
+                    }
+                    break;
+                  case "2":
+                    for(let i = 0; i < jsonPath.length; i++) {
+                      for(let a = 0; a < Object.keys(jsonPath[i]).length; a++) {
+                        if(jsonPath[i][Object.keys(jsonPath[i])[a]] == indexval && Object.keys(jsonPath[i])[a] == indexkey) {
+                          result.push(jsonPath[i])
+                          indexQ.push(i)
+                        }
+                      }
+                    }
+                    break;
+                  case "!2":
+                    for(let i = 0; i < jsonPath.length; i++) {
+                      for(let a = 0; a < Object.keys(jsonPath[i]).length; a++) {
+                        if(jsonPath[i][Object.keys(jsonPath[i])[a]] == indexval && Object.keys(jsonPath[i])[a] == indexkey) {
+                          result.push(jsonPath[i])
+                          indexQ.push(i)
+                        }
+                      }
+                    }
+                    break;
+                  case "3":
+                    for(let i = 0; i < jsonPath.length; i++) {
+                      if (jsonPath[i] == indexval) {
+                        result.push(i)
+                        indexQ.push(i)
+                      }
+                    }
                 }
+                
+                storage = parseInt(data.indexstorage, 10);
+                varName = this.evalMessage(data.indexvarName, cache);
+
+                switch(times) {
+                  case "0":
+                    indexQ = indexQ[0]
+                    jsonPath[indexQ][title] = value
+                    this.storeValue(indexQ, storage, varName, cache);
+                    break;
+                  case "1":
+                    indexQ = indexQ[indexQ.length - 1]
+                    jsonPath[indexQ][title] = value
+                    this.storeValue(indexQ, storage, varName, cache);
+                    break;
+                  case "2":
+                    for(let i = 0; i < indexQ.length; i++) {
+                      jsonPath[indexQ[i]][title] = value 
+                    }
+                    break;
+                }
+                fs.writeFileSync(filePath, JSON.stringify(json, undefined, 4))
             } else {
-                if(arrQ == "") {
-                    switch (select) {
-                        case "0":
-                            jsonPath.push({});
-                            break;
-                        case "1":
-                            jsonPath.push([]);
-                            break;
-                        case "2":
-                            jsonPath.push(value);
-                            break;
-                    }
-                } else {
-                    switch (select) {
-                        case "0":
-                            jsonPath = {};
-                            break;
-                        case "1":
-                            jsonPath = [];
-                            break;
-                        case "2":
-                            jsonPath = value;
-                            break;
-                    }
-                }
+              if(!Array.isArray(jsonPath)) {
+                  switch (select) {
+                      case "0":
+                          jsonPath[title] = {};
+                          break;
+                      case "1":
+                          jsonPath[title] = [];
+                          break;
+                      case "2":
+                          jsonPath[title] = value;
+                          break;
+                  }
+              } else {
+                  if(arrQ == "") {
+                      switch (select) {
+                          case "0":
+                              jsonPath.push({});
+                              break;
+                          case "1":
+                              jsonPath.push([]);
+                              break;
+                          case "2":
+                              jsonPath.push(value);
+                              break;
+                      }
+                  } else {
+                      switch (select) {
+                          case "0":
+                              jsonPath = {};
+                              break;
+                          case "1":
+                              jsonPath = [];
+                              break;
+                          case "2":
+                              jsonPath = value;
+                              break;
+                      }
+                  }
+              }
             }
         } else {
             if(arrQ == "") {
