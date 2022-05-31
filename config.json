@@ -1,7 +1,7 @@
 {
   "versions": {
     "customData": {
-      "control": "2.3",
+      "control": "2.4",
       "check": "2.0",
       "config": "2.0",
       "store": "2.0",

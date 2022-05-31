@@ -222,7 +222,6 @@
           }
         }
   
-        console.log(localStorage.getItem(design))
         if(localStorage.getItem(design) == "true") {
           design()
         }
@@ -327,7 +326,11 @@
       const from = this.evalMessage(data.from, cache);
       const index = !this.evalMessage(data.index, cache) ? "0" : this.evalMessage(data.index, cache);
       let result = undefined;
-      const text = `${data.text.replaceAll("${", `\${`)}`;
+      if (data.text) {
+        text = `${data.text.replaceAll("${", `\${`)}`;
+      } else {
+        text = undefined
+      }
   
       if(task == "0") {
         switch(from) {
@@ -342,7 +345,6 @@
         if(Object.keys(eval(jsonPath)?.[0]).toString() !== "0") {
           result = '';
           evals = '';
-          console.log(eval(jsonPath).length)
           for(let i = 0; i < eval(jsonPath).length; i++) {
             for(let a = 0; a < Object.keys(eval(jsonPath)[i]).length; a++) {
               evals += `${Object.keys(eval(jsonPath)[i])[a]} = "${eval(jsonPath)[i][Object.keys(eval(jsonPath)[i])[a]]}";\n`
