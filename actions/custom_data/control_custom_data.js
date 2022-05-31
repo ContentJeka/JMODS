@@ -546,11 +546,11 @@ module.exports = {
 
         let arrQ = "";
         let jsonPath;
-        let json = JSON.parse(fs.readFileSync(filePath)).catch(e => console.error(`Проблема при чтении: ${jsonPath}, путь правильный? 🤔\nПолнаю ошибка: ${e}`))
+        let json = JSON.parse(fs.readFileSync(filePath))
         if(this.evalMessage(data.jsonPath, cache) == ``) {
-            jsonPath = eval(`json`).catch(e => console.error(`Возникла проблема при чтении JSON Пути (${data.jsonPath})\nПроверьте путь на наличие ковычек (они не нужны)\nПолная ошибка: ${e}`))
+            jsonPath = eval(`json`)
         } else {
-            jsonPath = eval(`json?.["${this.evalMessage(data.jsonPath, cache).replaceAll("/",`"]?.["`)}"]`).catch(e => console.error(`Возникла проблема при чтении JSON Пути (${data.jsonPath})\nПроверьте путь на наличие ковычек (они не нужны)\nПолная ошибка: ${e}`))
+            jsonPath = eval(`json?.["${this.evalMessage(data.jsonPath, cache).replaceAll("/",`"]?.["`)}"]`)
             const index = this.evalMessage(data.index, cache);
 
             switch (index) {
