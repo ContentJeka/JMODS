@@ -3,7 +3,7 @@
       // Название
       name: 'Get Text From Image',
       // Группа
-      section: 'Other Staff',
+      section: 'Other Stuff',
       // Поля
       fields: [
           "image",
