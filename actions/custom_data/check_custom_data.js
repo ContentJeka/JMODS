@@ -31,7 +31,7 @@ module.exports = {
   ],
 
   meta: {
-    version: '2.0.1',
+    version: '2.1.5',
     preciseCheck: false,
     author: 'JMODS',
     authorUrl: 'https://github.com/ContentJeka/JMODS',
@@ -39,7 +39,6 @@ module.exports = {
   },
 
   subtitle(data, presets) {
-    console.log(JSON.stringify(presets, undefined, 4))
     return `${presets.getConditionsText(data)}`;
   },
 
