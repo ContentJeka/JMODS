@@ -10,7 +10,7 @@ module.exports = {
   },
 
   subtitle(data) {
-    return `Custom Data Top by '${data.jsonPath}'`;
+    return `Custom Data Top by <b>${data.jsonPath}</b>`;
   },
 
   fields: ['filePath', 'jsonPath', 'varName', 'storage'],
@@ -18,15 +18,13 @@ module.exports = {
   variableStorage(data, varType) {
     const type = parseInt(data.storage, 10);
     if (type !== varType) return;
-    const info = parseInt(data.info, 10);
-    let dataType = "Custom Data Top";
+    let dataType = `Top by ${data.jsonPath}`;
     return [data.varName, dataType];
   },
     
 
   html(_isEvent, data) {
     return `
-  <div style="position:absolute;bottom:0px;border: 0px solid #222;background:#363636;color:#5539cc;padding:3px;right:0px;z-index:999999">v1.0.0</div>
   <div style="position:absolute;bottom:0px;border: 0px solid #222;background:#363636;color:#5539cc;padding:3px;left:24px;z-index:999999">KailHet</div>
   <img id="top" src="https://cdn.discordapp.com/avatars/344482543632121856/31fbc74b572df17923427862ede875b7.png?width=115&height=115" style="width:29px;height:29px;position:absolute;bottom:-2px;padding:3px;left:-2px;z-index:999999;">
   
@@ -61,7 +59,6 @@ module.exports = {
       desc: true,
       comparer: new Intl.Collator(undefined, { numeric: true, sensitivity: 'base'}).compare,
     })
-    console.log(sort1)
   
     for (let i = 0; i < sort1.length; i++) {
       const j = obj.filter(o => o.value == sort1[i])
@@ -70,10 +67,9 @@ module.exports = {
       }
     }
 
-    result = top
     const storage = parseInt(data.storage, 10);
     const varName = this.evalMessage(data.varName, cache);
-    this.storeValue(result, storage, varName, cache);
+    this.storeValue(top, storage, varName, cache);
     this.callNextAction(cache);
   },
 
