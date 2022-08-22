@@ -3,10 +3,8 @@
     "customData": {
       "control": "2.4.1",
       "check": "2.4.0",
-      "config": "2.0",
       "store": "2.0",
-      "top": "2.0",
-      "guide": "2.0"
+      "top": "1.0"
     },
     "other": {
       "stats": "1.0",
