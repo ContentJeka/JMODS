@@ -14,11 +14,12 @@
 [ДОКУМЕНТАЦИЯ К **CUSTOM DATA**   <img style="width:50px" src="https://images-ext-2.discordapp.net/external/CwtYIbsIGmZhIFpbmMHc97ybSayyBvCTw_8H2xUez0A/https/i.imgur.com/7kAFYlp.png">](https://github.com/ContentJeka/JMODS/wiki)
 
 - **Custom Data** ↴
-  - Control Custom Data `v2.2`
-  - Create Custom Data File `v1.1.0`
+  - Control Custom Data `v2.4.1`
   - Store Custom Data `v2.0`
   - Check Custom Data `v2.0`
 - **Другое** ↴
   - Show Modal Window `v1.0.0`
+  - Get Text From Image `v1.0.0`
+  - HTML to Image `v1.0.0`
 
 Если вы обнаружили баг напишите об этом в **_[issues](https://github.com/ContentJeka/JMODS/issues)_** или в **_[дискорд DBM Russia](https://discord.gg/XZeWBqapE6)_**

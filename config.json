@@ -1,8 +1,8 @@
 {
   "versions": {
     "customData": {
-      "control": "2.2",
-      "check": "2.0",
+      "control": "2.4.1",
+      "check": "2.4.0",
       "config": "2.0",
       "store": "2.0",
       "top": "2.0",
@@ -10,7 +10,9 @@
     },
     "other": {
       "stats": "1.0",
-      "translations": "1.0"
+      "translations": "1.0",
+      "textfromimage": "1.0",
+      "htmltoimage": "1.0"
     }
   }
 }
