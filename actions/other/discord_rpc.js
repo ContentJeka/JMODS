@@ -156,10 +156,10 @@ module.exports = {
       result.state = state
     }
     if (largeImage !== `` && largeImage.length >= 2) {
-      result.largeImage = largeImage
+      result.largeImageKey = largeImage
     }
     if (smallImage !== `` && smallImage.length >= 2) {
-      result.smallImage = smallImage
+      result.smallImageKey = smallImage
     }
     if (largeImageText !== `` && largeImageText.length >= 2) {
       result.largeImageText = largeImageText
@@ -201,8 +201,9 @@ module.exports = {
       } else console.log(e)
     })
 
-    this.callNextAction(cache);
+    this.callNextAction(cache)
 
   },
+
   mod() {},
 };
