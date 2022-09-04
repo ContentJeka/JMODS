@@ -10,8 +10,7 @@
       "stats": "1.0",
       "translations": "1.0",
       "textfromimage": "1.0",
-      "htmltoimage": "1.0",
-      "discordrpc": "1.0"
+      "htmltoimage": "1.0"
     }
   }
 }

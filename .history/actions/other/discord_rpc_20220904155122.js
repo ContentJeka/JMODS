@@ -201,8 +201,6 @@ module.exports = {
       } else console.log(e)
     })
 
-    this.callNextAction(cache);
-
   },
   mod() {},
 };
