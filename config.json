@@ -1,7 +1,7 @@
 {
   "versions": {
     "customData": {
-      "control": "2.4.1",
+      "control": "2.4",
       "check": "2.4.0",
       "store": "2.0",
       "top": "1.0.1"
