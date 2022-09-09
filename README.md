@@ -22,6 +22,6 @@
   - Show Modal Window `v1.0.0`
   - Get Text From Image `v1.0.0`
   - HTML to Image `v1.0.0`
-  - Discord RPC `v1.0.0`
+  - Discord RPC `v2.0.0`
 
 Если вы обнаружили баг напишите об этом в **_[issues](https://github.com/ContentJeka/JMODS/issues)_** или в **_[дискорд DBM Russia](https://discord.gg/XZeWBqapE6)_**
