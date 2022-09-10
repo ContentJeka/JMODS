@@ -2,7 +2,7 @@ module.exports = {
   name: 'Discord RPC',
   section: 'Other Stuff',
   meta: {
-    version: '2.1.6',
+    version: '3.0.0',
     preciseCheck: false,
     author: 'KailHet',
     authorUrl: 'https://github.com/KailHet/',
@@ -19,44 +19,61 @@ module.exports = {
     'state',
     'details', 
     'largeImage', 
+    'largeImageText',
     'smallImage', 
+    'smallImageText',
     'buttonTitle1', 
     'buttonURL1', 
     'buttonTitle2', 
     'buttonURL2', 
-    'customClientID'
+    'customClientID',
+    'customclid'
   ],
 
   html(_isEvent, data) {
     return `
+<div style="width: 550px; height: 390px; overflow-y: scroll; overflow-x: hidden;"><br>
+  
   <div>
-
     <div style="float: left; width: 50%;">
       <span class="dbminputlabel">Основная надпись</span><br>
       <div style="float: left; width: 98%;">
-        <input type="text" name="state" id="state" class="round" placeholder="Должно быть заполнено" style="float: left;"/>
+        <input type="text" id="state" class="round" style="float: left;"/>
       </div>
     </div>
 
     <div style="padding-left: 2%; float: left; width: 50%;">
       <span class="dbminputlabel">Детали (под основным текстом)</span><br>
       <div style="float: left; width: 98%;">
-        <input type="text" name="details" id="details" class="round" placeholder="Должно быть заполнено" style="float: left;"/>
+        <input type="text" id="details" class="round" style="float: left;"/>
       </div>
     </div>
-
   </div><br><br><br>
 
   <div id="" style="float: left; width: 50%;padding-top: 3px;">
     <span class="dbminputlabel">Большая картинка</span><br>
       <div style="float: left; width: 98%;">
-        <input type="text" name="largeImage" id="largeImage" class="round" placeholder="Должна быть на Developer Portal" style="float: left;"/>
+        <input type="text" id="largeImage" class="round" placeholder="Должна быть на Developer Portal" style="float: left;"/>
       </div>  
     </div>
     <div id="" style="padding-left: 2%;float: left; width: 50%;padding-top: 3px;">
+    <span class="dbminputlabel">Текст при наведении</span><br>
+      <div style="float: left; width: 98%;">
+        <input type="text" id="largeImageText" class="round" style="float: left;"/>
+      </div>  
+    </div>
+  <div><br><br><br>
+
+  <div id="" style="float: left; width: 50%;padding-top: 3px;">
     <span class="dbminputlabel">Маленькая картинка</span><br>
       <div style="float: left; width: 98%;">
-        <input type="text" name="smallImage" id="smallImage" class="round" placeholder="Должна быть на Developer Portal" style="float: left;"/>
+        <input type="text" id="smallImage" class="round" placeholder="Должна быть на Developer Portal" style="float: left;"/>
+      </div>  
+    </div>
+    <div id="" style="padding-left: 2%;float: left; width: 50%;padding-top: 3px;">
+    <span class="dbminputlabel">Текст при наведении</span><br>
+      <div style="float: left; width: 98%;">
+        <input type="text" id="smallImageText" class="round" style="float: left;"/>
       </div>  
     </div>
   <div><br><br><br>
@@ -64,56 +81,72 @@ module.exports = {
   <div id="" style="float: left; width: 50%;padding-top: 3px;">
     <span class="dbminputlabel">Название кнопки</span><br>
       <div style="float: left; width: 98%;">
-        <input type="text" name="buttonTitle1" id="buttonTitle1" class="round" placeholder="" style="float: left;"/>
+        <input type="text" id="buttonTitle1" class="round" placeholder="" style="float: left;"/>
       </div>  
     </div>
     <div id="" style="padding-left: 2%;float: left; width: 50%;padding-top: 3px;">
     <span class="dbminputlabel">Ссылка</span><br>
       <div style="float: left; width: 98%;">
-        <input type="text" name="buttonURL1" id="buttonURL1" class="round" placeholder="" style="float: left;"/>
+        <input type="text" id="buttonURL1" class="round" placeholder="" style="float: left;"/>
       </div>  
-    </div><br><br><br>
+  </div><br><br><br>
 
-    <div id="" style="float: left; width: 50%;padding-top: 3px;">
+  <div id="" style="float: left; width: 50%;padding-top: 3px;">
     <span class="dbminputlabel">Название кнопки</span><br>
       <div style="float: left; width: 98%;">
-        <input type="text" name="buttonTitle2" id="buttonTitle2" class="round" placeholder="" style="float: left;"/>
+        <input type="text" id="buttonTitle2" class="round" placeholder="" style="float: left;"/>
       </div>  
     </div>
     <div id="" style="padding-left: 2%;float: left; width: 50%;padding-top: 3px;">
     <span class="dbminputlabel">Ссылка</span><br>
       <div style="float: left; width: 98%;">
-        <input type="text" name="buttonURL2" id="buttonURL2" class="round" placeholder="" style="float: left;"/>
+        <input type="text" id="buttonURL2" class="round" placeholder="" style="float: left;"/>
       </div>  
     </div>
   <div><br><br><br>
 
-  <div id="" style="float: left; width: 50%;padding-top: 3px;">
+<div id="" style="float: left; width: 50%;padding-top: 3px;">
   <span class="dbminputlabel">Client ID</span><br>
     <div style="float: left; width: 98%;">
-      <select id="clientIDType" class="round">
+      <select id="clientIDType" class="round" onchange="glob.onChangeClient(this)">
         <option value="0">Текущего бота</option>
         <option value="1">Другой</option>
       </select>
     </div>  
   </div>
-  <div id="" style="padding-left: 2%;float: left; width: 50%;padding-top: 3px;">
-  <span class="dbminputlabel">Кастомный Client ID</span><br>
+
+  <div id="customclid" style="padding-left: 2%;float: left; width: 50%;padding-top: 3px;">
+    <span class="dbminputlabel">Кастомный Client ID</span><br>
     <div style="float: left; width: 98%;">
-      <input type="text" name="customClientID" id="customClientID" class="round" placeholder="" style="float: left;"/>
+      <input type="text" name="customClientID" id="customClientID" class="round" style="float: left;"/>
     </div>  
-  </div>
-<div><br><br><br><br><br><br>
+  </div><br><br><br><br><br>
 
   <div id="" style="">
     <span>Заголовок активности это название приложения на <b>Discord Developer Portal</b></span>
     <br>
     <span>Картинки нужно загружать в <b>Application -> Rich Presence -> Art Assets</b></span>
   </div>
+</div>
   `;
   },
 
-  init() {},
+  init() {
+    const { glob, document } = this;
+
+    glob.onChangeClient = function onChangeClient(clientIDType) {
+      switch (parseInt(clientIDType.value, 10)) {
+        case 0:
+          document.getElementById('customclid').style.display = 'none';
+          break;
+        case 1:
+          document.getElementById('customclid').style.display = null;
+          break;
+      }
+    };
+
+    glob.onChangeClient(document.getElementById('clientIDType'));
+  },
 
   async action(cache) {
     const data = cache.actions[cache.index];
