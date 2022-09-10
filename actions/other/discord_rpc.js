@@ -38,14 +38,13 @@ module.exports = {
     <div style="float: left; width: 50%;">
       <span class="dbminputlabel">Основная надпись</span><br>
       <div style="float: left; width: 98%;">
-        <input type="text" id="state" class="round" style="float: left;"/>
+        <input type="text" id="details" class="round" style="float: left;"/>
       </div>
     </div>
-
     <div style="padding-left: 2%; float: left; width: 50%;">
       <span class="dbminputlabel">Детали (под основным текстом)</span><br>
       <div style="float: left; width: 98%;">
-        <input type="text" id="details" class="round" style="float: left;"/>
+        <input type="text" id="state" class="round" style="float: left;"/>
       </div>
     </div>
   </div><br><br><br>
@@ -114,7 +113,6 @@ module.exports = {
       </select>
     </div>  
   </div>
-
   <div id="customclid" style="padding-left: 2%;float: left; width: 50%;padding-top: 3px;">
     <span class="dbminputlabel">Кастомный Client ID</span><br>
     <div style="float: left; width: 98%;">
