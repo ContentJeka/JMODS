@@ -29,11 +29,11 @@ module.exports = {
     'customClientID',
     'customclid'
   ],
-
+  size() {
+    return { width: 600, height: 600 };
+  },
   html(_isEvent, data) {
-    return `
-<div style="width: 550px; height: 390px; overflow-y: scroll; overflow-x: hidden;"><br>
-  
+    return `  
   <div>
     <div style="float: left; width: 50%;">
       <span class="dbminputlabel">Основная надпись</span><br>
@@ -120,13 +120,12 @@ module.exports = {
     </div>  
   </div><br><br><br><br><br>
 
-  <div id="" style="">
+  <div id="" style="text-align: center">
     <span>Заголовок активности это название приложения на <b>Discord Developer Portal</b></span>
     <br>
     <span>Картинки нужно загружать в <b>Application -> Rich Presence -> Art Assets</b></span>
   </div>
-</div>
-  `;
+`;
   },
 
   init() {
@@ -217,19 +216,17 @@ module.exports = {
     }
     
     rpc.on("ready", () => {
-      setInterval(() => {
         rpc.setActivity(result)
-      }, 1000)
     })
     
     rpc.login({
       clientId: clID
     }).catch(e => {
       if (e.message == `connection closed`) {
-        console.log(`<font color="red">[RPC] Подключение разорвано. Перезапустите Discord</font>`)
+        console.error(`[RPC] Подключение разорвано. Перезапустите Discord`)
       } else if (e.message == `RPC_CONNECTION_TIMEOUT`) {
-        console.log(`<font color="red">[RPC] Discord временно ограничил доступ к RPC</font>`)
-      } else console.log(e)
+        console.error(`[RPC] Discord временно ограничил доступ к RPC`)
+      } else console.error(`[RPC]${e}`)
     })
 
     this.callNextAction(cache)
