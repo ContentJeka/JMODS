@@ -2,7 +2,7 @@ module.exports = {
   name: 'Discord RPC',
   section: 'Other Stuff',
   meta: {
-    version: '3.0.0',
+    version: '3.0.1',
     preciseCheck: false,
     author: 'KailHet',
     authorUrl: 'https://github.com/KailHet/',
@@ -27,10 +27,11 @@ module.exports = {
     'buttonTitle2', 
     'buttonURL2', 
     'customClientID',
-    'customclid'
+    'customclid',
+    'startTimestamp'
   ],
   size() {
-    return { width: 600, height: 600 };
+    return { width: 600, height: 650 };
   },
   html(_isEvent, data) {
     return `  
@@ -48,7 +49,6 @@ module.exports = {
       </div>
     </div>
   </div><br><br><br>
-
   <div id="" style="float: left; width: 50%;padding-top: 3px;">
     <span class="dbminputlabel">Большая картинка</span><br>
       <div style="float: left; width: 98%;">
@@ -62,7 +62,6 @@ module.exports = {
       </div>  
     </div>
   <div><br><br><br>
-
   <div id="" style="float: left; width: 50%;padding-top: 3px;">
     <span class="dbminputlabel">Маленькая картинка</span><br>
       <div style="float: left; width: 98%;">
@@ -76,7 +75,6 @@ module.exports = {
       </div>  
     </div>
   <div><br><br><br>
-
   <div id="" style="float: left; width: 50%;padding-top: 3px;">
     <span class="dbminputlabel">Название кнопки</span><br>
       <div style="float: left; width: 98%;">
@@ -89,7 +87,6 @@ module.exports = {
         <input type="text" id="buttonURL1" class="round" placeholder="" style="float: left;"/>
       </div>  
   </div><br><br><br>
-
   <div id="" style="float: left; width: 50%;padding-top: 3px;">
     <span class="dbminputlabel">Название кнопки</span><br>
       <div style="float: left; width: 98%;">
@@ -103,7 +100,6 @@ module.exports = {
       </div>  
     </div>
   <div><br><br><br>
-
 <div id="" style="float: left; width: 50%;padding-top: 3px;">
   <span class="dbminputlabel">Client ID</span><br>
     <div style="float: left; width: 98%;">
@@ -118,8 +114,16 @@ module.exports = {
     <div style="float: left; width: 98%;">
       <input type="text" name="customClientID" id="customClientID" class="round" style="float: left;"/>
     </div>  
-  </div><br><br><br><br><br>
-
+  </div><br><br><br><br>
+  <div id="" style="float: left; width: 50%;padding-top: 3px;">
+  <span class="dbminputlabel">Время</span><br>
+    <div style="float: left; width: 98%;">
+      <select id="startTimestamp" class="round">
+        <option value="0">Показывать</option>
+        <option value="1">Скрывать</option>
+      </select>
+    </div>  
+  </div><br><br><br><br>
   <div id="" style="text-align: center">
     <span>Заголовок активности это название приложения на <b>Discord Developer Portal</b></span>
     <br>
@@ -160,6 +164,7 @@ module.exports = {
     const buttonURL1 = this.evalMessage(data.buttonURL1, cache)
     const buttonURL2 = this.evalMessage(data.buttonURL2, cache)
     const clientIDType = data.clientIDType
+    const startTimestamp = data.startTimestamp
 
     let clID = ``
     switch (clientIDType) {
@@ -196,6 +201,9 @@ module.exports = {
     }
     if (smallImageText !== `` && smallImageText.length >= 2) {
       result.smallImageText = smallImageText
+    }
+    if (startTimestamp) {
+      result.startTimestamp = Date.now()
     }
 
     let buttons = []
