@@ -114,12 +114,15 @@ module.exports = {
     <div style="float: left; width: 98%;">
       <input type="text" name="customClientID" id="customClientID" class="round" style="float: left;"/>
     </div>  
-  </div>
+  </div><br><br><br><br>
+  <div id="" style="float: left; width: 50%;padding-top: 3px;">
   <span class="dbminputlabel">Время</span><br>
-  <select id="startTimestamp" class="round">
-    <option value="0">Показывать</option>
-    <option value="1" selected>Скрывать</option>
-  </select>
+    <div style="float: left; width: 98%;">
+      <select id="startTimestamp" class="round">
+        <option value="0">Показывать</option>
+        <option value="1" selected>Скрывать</option>
+      </select>
+    </div>  
   </div><br><br><br><br>
   <div id="" style="text-align: center">
     <span>Заголовок активности это название приложения на <b>Discord Developer Portal</b></span>
