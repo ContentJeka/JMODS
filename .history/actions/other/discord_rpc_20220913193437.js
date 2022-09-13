@@ -114,7 +114,7 @@ module.exports = {
     <div style="float: left; width: 98%;">
       <input type="text" name="customClientID" id="customClientID" class="round" style="float: left;"/>
     </div>  
-  </div>
+  </div><br>
   <span class="dbminputlabel">Время</span><br>
   <select id="startTimestamp" class="round">
     <option value="0">Показывать</option>

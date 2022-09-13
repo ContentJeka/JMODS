@@ -2,7 +2,7 @@ module.exports = {
   name: 'Discord RPC',
   section: 'Other Stuff',
   meta: {
-    version: '3.0.0',
+    version: '3.0.1',
     preciseCheck: false,
     author: 'KailHet',
     authorUrl: 'https://github.com/KailHet/',
@@ -114,12 +114,15 @@ module.exports = {
     <div style="float: left; width: 98%;">
       <input type="text" name="customClientID" id="customClientID" class="round" style="float: left;"/>
     </div>  
-  </div>
+  </div><br><br><br><br>
+  <div id="" style="float: left; width: 50%;padding-top: 3px;">
   <span class="dbminputlabel">Время</span><br>
-  <select id="startTimestamp" class="round">
-    <option value="0">Показывать</option>
-    <option value="1" selected>Скрывать</option>
-  </select>
+    <div style="float: left; width: 98%;">
+      <select id="startTimestamp" class="round">
+        <option value="0">Показывать</option>
+        <option value="1" selected>Скрывать</option>
+      </select>
+    </div>  
   </div><br><br><br><br>
   <div id="" style="text-align: center">
     <span>Заголовок активности это название приложения на <b>Discord Developer Portal</b></span>
@@ -199,7 +202,7 @@ module.exports = {
     if (smallImageText !== `` && smallImageText.length >= 2) {
       result.smallImageText = smallImageText
     }
-    if (startTimestamp == "0") {
+    if (startTimestamp) {
       result.startTimestamp = Date.now()
     }
 
