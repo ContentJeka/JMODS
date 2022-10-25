@@ -140,7 +140,7 @@ module.exports = {
 
             <tab label="Поля" icon="list">
               <div style="padding: 8px">
-                <dialog-list id="fields" fields='["name", "value", "inline"]' dialogTitle="Field Info" dialogWidth="540" dialogHeight="300" listLabel="Поля" listStyle="height: calc(100vh - 190px);" itemName="Field" itemCols="1" itemHeight="30px;" itemTextFunction="data.name + '<br>' + data.value" itemStyle="text-align: left; line-height: 30px;">
+                <dialog-list id="fields" fields='["name", "value", "inline"]' dialogTitle="Настройки поля" dialogWidth="540" dialogHeight="300" listLabel="Поля" listStyle="height: calc(100vh - 190px);" itemName="Field" itemCols="1" itemHeight="30px;" itemTextFunction="data.name + '<br>' + data.value" itemStyle="text-align: left; line-height: 30px;">
                   <div style="padding: 16px;">
                     <div style="float: left; width: calc(50% - 12px);">
                       <span class="dbminputlabel">Заголовок поля</span><br>
@@ -165,7 +165,7 @@ module.exports = {
               </div>
             </tab>
 
-            <tab label="Author" icon="user circle">
+            <tab label="Автор" icon="user circle">
               <div style="padding: 8px">
                 <span class="dbminputlabel">Автор</span><br>
                 <input id="author" class="round" type="text">
@@ -276,7 +276,7 @@ module.exports = {
   <tab label="Меню" icon="list alternate">
     <div style="padding: 8px;">
 
-      <dialog-list id="selectMenus" fields='["placeholder", "id", "tempVarName", "row", "min", "max", "mode", "time", "options", "actions"]' dialogTitle="Настройки меню" dialogWidth="800" dialogHeight="700" listLabel="Select Menus" listStyle="height: calc(100vh - 350px);" itemName="Select Menu" itemCols="1" itemHeight="40px;" itemTextFunction="data.placeholder + '<br>' + data.options" itemStyle="text-align: left; line-height: 40px;">
+      <dialog-list id="selectMenus" fields='["placeholder", "id", "tempVarName", "row", "min", "max", "mode", "time", "options", "actions"]' dialogTitle="Настройки меню" dialogWidth="800" dialogHeight="700" listLabel="Меню" listStyle="height: calc(100vh - 350px);" itemName="Select Menu" itemCols="1" itemHeight="40px;" itemTextFunction="data.placeholder + '<br>' + data.options" itemStyle="text-align: left; line-height: 40px;">
         <div style="padding: 16px;">
           <div style="width: calc(33% - 16px); float: left; margin-right: 16px;">
             <span class="dbminputlabel">Placeholder</span>
@@ -284,75 +284,75 @@ module.exports = {
 
             <br>
 
-            <span class="dbminputlabel">Temp Variable Name</span>
-            <input id="tempVarName" placeholder="Stores selected value for actions..." class="round" type="text">
+            <span class="dbminputlabel">Название переменной</span>
+            <input id="tempVarName" placeholder="Хранит выбранное значение из опций..." class="round" type="text">
 
             <br>
 
-            <span class="dbminputlabel">Minimum Select Number</span>
+            <span class="dbminputlabel">Минимальное кол-во для выбора</span>
             <input id="min" class="round" type="text" value="1">
 
             <br>
 
             <span class="dbminputlabel">
-              Action Response Mode
+              Режим реакции на нажатие
               <help-icon type="ACTION_RESPONSE_MODE"></help-icon>
             </span><br>
             <select id="mode" class="round">
-              <option value="PERSONAL">Once, Command User Only</option>
-              <option value="PUBLIC">Once, Anyone Can Use</option>
-              <option value="MULTIPERSONAL">Multi, Command User Only</option>
-              <option value="MULTI" selected>Multi, Anyone Can Use</option>
-              <option value="PERSISTENT">Persistent</option>
+              <option value="PERSONAL">Один раз, Автор команды</option>
+              <option value="PUBLIC">Один раз, Кто угодно</option>
+              <option value="MULTIPERSONAL">Много раз, Автор команды</option>
+              <option value="MULTI" selected>Много раз, Кто угодно</option>
+              <option value="PERSISTENT">Постоянное меню</option>
             </select>
           </div>
           <div style="width: calc(33% - 16px); float: left; margin-right: 16px;">
-            <span class="dbminputlabel">Unique ID</span>
-            <input id="id" placeholder="Leave blank to auto-generate..." class="round" type="text">
+            <span class="dbminputlabel">Уникальный ID</span>
+            <input id="id" placeholder="Генерируется автоматически..." class="round" type="text">
 
             <br>
 
-            <span class="dbminputlabel">Action Row (1 - 5)</span>
-            <input id="row" placeholder="Leave blank for default..." class="round" type="text">
+            <span class="dbminputlabel">Ряд (1 - 5)</span>
+            <input id="row" class="round" type="text">
 
             <br>
 
-            <span class="dbminputlabel">Maximum Select Number</span>
+            <span class="dbminputlabel">Максимальное кол-во для выбора</span>
             <input id="max" class="round" type="text" value="1">
 
             <br>
 
-            <span class="dbminputlabel">Temporary Time-Limit (Miliseconds)</span>
+            <span class="dbminputlabel">Время действия (в миллисек.)</span>
             <input id="time" placeholder="60000" class="round" type="text">
           </div>
           <div style="width: calc(34% - 8px); height: 300px; float: left; margin-left: 8px;">
 
-            <dialog-list id="options" fields='["label", "description", "value", "emoji", "default"]' dialogTitle="Select Menu Option Info" dialogWidth="360" dialogHeight="440" listLabel="Options" listStyle="height: 210px;" itemName="Option" itemCols="1" itemHeight="20px;" itemTextFunction="data.label" itemStyle="text-align: left; line-height: 20px;">
+            <dialog-list id="options" fields='["label", "description", "value", "emoji", "default"]' dialogTitle="Настройки опций меню" dialogWidth="360" dialogHeight="440" listLabel="Опции" listStyle="height: 210px;" itemName="Option" itemCols="1" itemHeight="20px;" itemTextFunction="data.label" itemStyle="text-align: left; line-height: 20px;">
               <div style="padding: 16px;">
-                <span class="dbminputlabel">Name</span>
+                <span class="dbminputlabel">Название</span>
                 <input id="label" class="round" type="text">
 
                 <br>
 
-                <span class="dbminputlabel">Description</span>
+                <span class="dbminputlabel">Описание</span>
                 <input id="description" class="round" type="text">
 
                 <br>
 
-                <span class="dbminputlabel">Value</span>
-                <input id="value" placeholder="The text passed to the temp variable..." class="round" type="text">
+                <span class="dbminputlabel">Значение</span>
+                <input id="value" placeholder="Текст, который будет сохранен в переменную" class="round" type="text">
 
                 <br>
 
-                <span class="dbminputlabel">Emoji</span>
-                <input id="emoji" placeholder="Leave blank for none..." class="round" type="text">
+                <span class="dbminputlabel">Эмодзи</span>
+                <input id="emoji" class="round" type="text">
 
                 <br>
 
-                <span class="dbminputlabel">Default Selected</span><br>
+                <span class="dbminputlabel">Выбрано по умолчанию?</span><br>
                 <select id="default" class="round">
-                  <option value="true">Yes</option>
-                  <option value="false" selected>No</option>
+                  <option value="true">Да</option>
+                  <option value="false" selected>Нет</option>
                 </select>
               </div>
             </dialog-list>
@@ -377,23 +377,23 @@ module.exports = {
   </tab>
 
 
-  <tab label="Files" icon="file image">
+  <tab label="Файлы" icon="file image">
     <div style="padding: 8px;">
 
-      <dialog-list id="attachments" fields='["url", "name", "spoiler"]' dialogTitle="Attachment Info" dialogWidth="400" dialogHeight="280" listLabel="Files" listStyle="height: calc(100vh - 350px);" itemName="File" itemCols="1" itemHeight="30px;" itemTextFunction="data.url" itemStyle="text-align: left; line-height: 30px;">
+      <dialog-list id="attachments" fields='["url", "name", "spoiler"]' dialogTitle="Настройки вложения" dialogWidth="400" dialogHeight="280" listLabel="Файлы" listStyle="height: calc(100vh - 350px);" itemName="File" itemCols="1" itemHeight="30px;" itemTextFunction="data.url" itemStyle="text-align: left; line-height: 30px;">
         <div style="padding: 16px;">
-          <span class="dbminputlabel">Attachment Local/Web URL</span>
+          <span class="dbminputlabel">Путь/Ссылка на вложение</span>
           <input id="url" class="round" type="text" value="resources/">
 
           <br>
 
-          <span class="dbminputlabel">Attachment Name</span>
-          <input id="name" class="round" type="text" placeholder="Leave blank for default...">
+          <span class="dbminputlabel">Название вложения</span>
+          <input id="name" class="round" type="text">
 
           <br>
 
           <div style="text-align: center; padding-top: 4px;">
-            <dbm-checkbox id="spoiler" label="Make Attachment Spoiler"></dbm-checkbox>
+            <dbm-checkbox id="spoiler" label="Сделать вложение спойлером"></dbm-checkbox>
           </div>
         </div>
       </dialog-list>
@@ -401,20 +401,20 @@ module.exports = {
   </tab>
 
 
-  <tab label="Settings" icon="cogs">
+  <tab label="Настройки" icon="cogs">
     <div style="padding: 8px;">
-      <dbm-checkbox style="float: left;" id="reply" label="Reply to Interaction if Possible" checked></dbm-checkbox>
+      <dbm-checkbox style="float: left;" id="reply" label="Ответить на взаимодействие" checked></dbm-checkbox>
 
-      <dbm-checkbox style="float: right;" id="ephemeral" label="Make Reply Private (Ephemeral)"></dbm-checkbox>
+      <dbm-checkbox style="float: right;" id="ephemeral" label="Приватный ответ (Ephemeral)"></dbm-checkbox>
 
       <br><br>
 
       <div style="display: flex; justify-content: space-between;">
         <dbm-checkbox id="tts" label="Text-to-Speech"></dbm-checkbox>
 
-        <dbm-checkbox id="overwrite" label="Overwrite Changes"></dbm-checkbox>
+        <dbm-checkbox id="overwrite" label="Перезаписать изменения"></dbm-checkbox>
 
-        <dbm-checkbox id="dontSend" label="Don't Send Message"></dbm-checkbox>
+        <dbm-checkbox id="dontSend" label="Не отправлять сообщение"></dbm-checkbox>
       </div>
 
       <br>
@@ -424,8 +424,8 @@ module.exports = {
       <br>
 
       <div style="padding-bottom: 12px;">
-        <retrieve-from-variable allowNone dropdownLabel="Message/Options to Edit" selectId="editMessage" variableInputId="editMessageVarName" variableContainerId="editMessageVarNameContainer">
-          <option value="intUpdate">Interaction Update</option>
+        <retrieve-from-variable allowNone dropdownLabel="Сообщение/Опция для редактирования" selectId="editMessage" variableInputId="editMessageVarName" variableContainerId="editMessageVarNameContainer">
+          <option value="intUpdate">Обновление взаимодействия</option>
         </retrieve-from-variable>
       </div>
 
