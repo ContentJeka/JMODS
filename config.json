@@ -12,7 +12,7 @@
       "textfromimage": "1.0",
       "htmltoimage": "1.0",
       "discordrpc": "2.1",
-      "trello": "1.0"
+      "trello": "1.0",
       "rusendmessage": "1.1"
     }
   }

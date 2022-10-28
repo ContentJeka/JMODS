@@ -284,6 +284,7 @@ module.exports = {
 
             <br>
 
+
             <span class="dbminputlabel">Название переменной</span>
             <input id="tempVarName" placeholder="Хранит выбранное значение из опций..." class="round" type="text">
 
@@ -375,7 +376,6 @@ module.exports = {
 
     </div>
   </tab>
-
 
   <tab label="Файлы" icon="file image">
     <div style="padding: 8px;">
