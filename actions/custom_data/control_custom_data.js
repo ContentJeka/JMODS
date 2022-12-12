@@ -732,7 +732,8 @@ module.exports = {
             }
             if(arrQ == "") {
                 try {
-                  delete jsonPath
+                  eval(`delete ${jsonPath}`);
+                  fs.writeFileSync(filePath, JSON.stringify(json, undefined, 4))
                 } catch(e) {console.error(`Ошибка при удалении ${jsonPath}\nПолная ошибка: ${e}`)}
             } else {
                 try{
